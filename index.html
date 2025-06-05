@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GovPlatform Finder India</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
+    </svg>
+  </button>
+
+  <div class="container">
+    <header>
+      <h1>GovPlatform Finder <span>India</span></h1>
+      <p>Discover Indian government platforms for your needs.</p>
+    </header>
+
+    <main>
+      <div class="location-selector">
+        <select id="state-select">
+          <option value="">Select State</option>
+        </select>
+        <select id="district-select" disabled>
+          <option value="">Select District</option>
+        </select>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" id="query-input" placeholder="What government service are you looking for?" />
+        <button id="search-button"><span>Search</span></button>
+      </div>
+
+      <div id="error-message"></div>
+      <div id="loading-spinner"></div>
+      <div id="results-display"></div>
+    </main>
+
+    <footer>
+      <p>Information provided by AI. Always verify details on official government websites.</p>
+      <p>Powered by OpenRouter API. District data from npoint.io.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
