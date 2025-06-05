@@ -1,4 +1,4 @@
-
+const DISTRICT_API_URL = "https://api.npoint.io/18cba66dce43d200ae6f";
 const stateSelect = document.getElementById("state-select");
 const districtSelect = document.getElementById("district-select");
 const queryInput = document.getElementById("query-input");
