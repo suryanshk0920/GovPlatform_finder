@@ -1,6 +1,3 @@
-const DISTRICT_API_URL = "https://api.npoint.io/18cba66dce43d200ae6f";
-const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
-const OPENROUTER_API_KEY = "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"; // Replace with your actual API key
 
 const stateSelect = document.getElementById("state-select");
 const districtSelect = document.getElementById("district-select");
@@ -131,18 +128,18 @@ User Query: "${query}"
 Location Focus: ${locationContext}
 `;
 
-    const response = await fetch(OPENROUTER_API_URL, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "openai/gpt-3.5-turbo",
-        messages: [{ role: "user", content: prompt }],
-        temperature: 0.2
-      })
-    });
+    const response = await fetch("/api/get-platforms", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    model: "openai/gpt-3.5-turbo",
+    messages: [{ role: "user", content: prompt }],
+    temperature: 0.2
+  })
+});
+
 
     if (!response.ok) {
       const errorText = await response.text();
