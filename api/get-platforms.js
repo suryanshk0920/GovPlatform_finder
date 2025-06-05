@@ -21,4 +21,8 @@ export default async function handler(req, res) {
     console.error("OpenRouter API Error:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
+
+  const data = await response.json();
+console.log("API response:", data); // ADD THIS
+
 }
