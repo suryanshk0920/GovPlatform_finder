@@ -127,8 +127,7 @@ If no specific platforms are found for the given query and location, return an e
 User Query: "${query}"
 Location Focus: ${locationContext}
 `;
-
-    const response = await fetch("/api/get-platforms", {
+const response = await fetch("/api/get-platforms", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
@@ -140,14 +139,20 @@ Location Focus: ${locationContext}
   })
 });
 
+if (!response.ok) {
+  const errorText = await response.text();
+  throw new Error(`Failed to fetch data from OpenRouter API: ${response.status} - ${errorText}`);
+}
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`Failed to fetch data from OpenRouter API: ${response.status} - ${errorText}`);
-    }
+const data = await response.json();
 
-    const data = await response.json();
-    const content = data.choices[0].message.content.trim();
+if (!data.choices || !data.choices[0]?.message?.content) {
+  console.error("Unexpected API response:", data);
+  throw new Error("Unexpected API response format from backend.");
+}
+
+const content = data.choices[0].message.content.trim();
+
 
     let platforms = [];
     try {
